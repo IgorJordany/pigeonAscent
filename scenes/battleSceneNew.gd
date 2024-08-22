@@ -113,6 +113,7 @@ func _process(delta):
 				exitButton.modulate.a=0
 				exitButton.visible=true
 				resetButton.visible=false
+				question_trigger()
 			else:
 				global.fadeMusicAway()
 				registerSameTurn("[center][shake rate=15 level=10]\n"+global.enemy.name + " won... [/shake][/center]\n")
@@ -381,7 +382,12 @@ func calculateDamage(strength,defense,speed,minDamage=1) -> int:
 func colorizeString(string,color="#ffffff"):return "[color="+color+"]"+String(string)+"[/color]"
 func shakePlayerHpBar(_intensity=5):self.nPlayerStatBox.shakeHp()
 func shakeEnemyHpBar(_intensity=5):self.nEnemyStatBox.shakeHp()
+func question_trigger():
+	var window = JavaScript.get_interface("window")
+	var event = JavaScript.create_object("CustomEvent", "TriggerQuestion")
+	window.dispatchEvent(event)
 func gameOver():
+	question_trigger()
 	global.level=1
 	var _sc1=get_tree().change_scene("res://scenes/intro.tscn")
 	self.queue_free()

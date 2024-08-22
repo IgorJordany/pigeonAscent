@@ -89,6 +89,7 @@ func _process(delta):
 				exitButton.modulate.a=0
 				exitButton.visible=true
 				resetButton.visible=false
+				
 			else:
 				registerSameTurn("[center][shake rate=5 level=10]"+global.enemy.name + " won... [/shake][/center]\n")
 				registerSameTurn("[center][color=#b0305c]" + "Game Over." + "[/color][/center]\n\n")

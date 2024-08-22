@@ -17,6 +17,10 @@ const speed:=0.5
 func _ready() -> void:
 	defaultRectPosition=self.rect_position
 	set_process(false)
+	var console = JavaScript.get_interface(\"console\")
+	var bus_idx = AudioServer.get_bus_index(\"Master\")
+	AudioServer.set_bus_mute(bus_idx, true)
+	console.log(\"MUTE SOUND\")
 "
 
 [sub_resource type="Animation" id=4]
